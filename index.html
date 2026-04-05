@@ -1,23 +1,529 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+ <!-- JSON-LD Structured Data for SEO (Article and Car) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yourdomain.com"
+      },
+      "headline": "BYD 돌핀 유지비 분석: 2026년 전기차 비용 절약 가이드",
+      "description": "2026년형 BYD 돌핀의 실제 유지비용(전기요금, 보험료, 소모품 등)을 자세히 분석합니다. 전기차 구매를 고려하는 소비자들을 위한 장단점 비교 및 비용 절약 팁을 제공합니다.",
+      "image": "https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg",
+      "datePublished": "2026-04-05T08:00:00+09:00",
+      "dateModified": "2026-04-05T08:00:00+09:00",
+      "author": {
+        "@type": "Organization",
+        "name": "BYD 돌핀 유지비 분석 센터"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "BYD 돌핀 유지비 분석 센터",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yourdomain.com/logo.png"
+        }
+      },
+      "articleBody": "BYD 돌핀 유지비는 일반 내연기관 차량에 비해 얼마나 저렴할까요? 2026년 기준 BYD 돌핀의 유지비용을 상세하게 분석하고, 충전 비용, 보험료, 소모품 교체 주기, 정부 보조금 혜택 등을 종합적으로 다룹니다. 특히, 장점과 단점을 명확히 비교하여 합리적인 구매 결정을 돕는 정보를 제공합니다."
+    }
+  </script>
+
+  <style>
+    /* 폰트, 기본 레이아웃 및 색상 설정 */
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: #f7f9fc; /* 부드러운 배경색 */
+      color: #333;
+      word-break: keep-all;
+    }
+    header {
+      background-color: #0077c2; /* 밝은 파란색 */
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 0.5rem 0 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: 1.1rem;
+    }
+    nav a:hover {
+      color: #ffd700; /* 황금색 */
+      transform: translateY(-2px);
+    }
+    main {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+      border-radius: 12px;
+    }
+    /* 섹션 제목 스타일 */
+    h1, h2, h3 {
+      color: #004d99; /* 진한 남색 */
+      font-weight: 700;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+      border-bottom: 3px solid #e0f0ff;
+    }
+    h3 {
+      font-size: 1.6rem;
+      margin-top: 2rem;
+      color: #0077c2;
+    }
+    p {
+      text-align: justify;
+      margin-bottom: 1.5rem;
+      color: #444;
+    }
+    /* 이미지 스타일 */
+    .hero-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+    /* 테이블 스타일 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 1.2rem;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+    }
+    th {
+      background-color: #0077c2;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    tr:nth-child(even) {
+      background-color: #f8f8f8;
+    }
+    /* CTA 버튼 스타일 */
+    .cta-button {
+      display: inline-block;
+      background-color: #ff6600;
+      color: white;
+      font-weight: 700;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      margin: 2rem 0;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-align: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .cta-button:hover {
+      background-color: #e65c00;
+      transform: translateY(-2px);
+    }
+    /* 키워드 태그 스타일 */
+    .keyword-tags {
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+    .keyword-tags a {
+      background-color: #e0f0ff;
+      color: #0066cc;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .keyword-tags a:hover {
+      background-color: #b3d1ff;
+      transform: scale(1.05);
+    }
+    /* FAQ 스타일 (아코디언) */
+    .faq-item dt {
+      font-weight: 700;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      color: #0066cc;
+      background-color: #f5fafd;
+      padding: 1rem;
+      border-left: 5px solid #0066cc;
+      transition: background-color 0.3s ease;
+    }
+    .faq-item dt:hover {
+      background-color: #e6f2ff;
+    }
+    .faq-item dd {
+      margin: 0.5rem 0 1.5rem 1rem;
+      padding-left: 1rem;
+      border-left: 2px dashed #ccc;
+      display: none;
+    }
+    .faq-item dt.active + dd {
+      display: block;
+    }
+    /* 인풋 필드 영역 스타일 */
+    .input-calculator {
+      background-color: #fcfcfc;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .input-calculator label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .input-calculator input, .input-calculator select {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .input-calculator button {
+      background-color: #0077c2;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .input-calculator button:hover {
+      background-color: #005f9c;
+    }
+    /* 외부 링크 스타일 */
+    .external-link {
+      color: #0066cc;
+      font-weight: 500;
+      text-decoration: underline;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    /* Footer 스타일 */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: #e0eaf1;
+      margin-top: 3rem;
+      border-top: 1px solid #d0dbe4;
+    }
+    /* 기타 유틸리티 클래스 */
+    .info-box {
+      background-color: #f9f9ff;
+      border-left: 4px solid #0077c2;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BYD 돌핀 유지비 분석 | 2026년 전기차 비용 절약 가이드</h1>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <ul>
+        <li><a href="#intro">BYD 돌핀 소개</a></li>
+        <li><a href="#cost-analysis">유지비 상세 분석</a></li>
+        <li><a href="#comparison">경쟁 모델 비교</a></li>
+        <li><a href="#tips">비용 절약 팁</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="intro">
+      <img src="https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="BYD 돌핀 전기차 이미지" class="hero-image">
+      <h2>BYD 돌핀, 합리적인 전기차의 대안인가?</h2>
+      <p>BYD 돌핀은 최근 국내 전기차 시장에서 뜨거운 관심을 받고 있는 소형 전기차 모델입니다. 매력적인 가격대와 실용적인 주행 거리로 인해 많은 소비자들이 구매를 고려하고 있습니다. 하지만 전기차를 선택할 때 가장 중요한 요소 중 하나는 바로 **유지비**입니다. BYD 돌핀의 실제 유지비용은 내연기관 차량과 비교했을 때 얼마나 절감될 수 있을까요? 2026년 최신 정보를 바탕으로 BYD 돌핀의 A부터 Z까지, 모든 유지 비용을 심층적으로 분석해 드립니다.</p>
+      <p>전기차의 유지비는 크게 충전 비용(연료비), 소모품 교체 비용, 보험료 및 세금으로 나뉩니다. BYD 돌핀은 저렴한 초기 구입 가격 덕분에 진입 장벽이 낮은 편이지만, 장기적인 관점에서 **유지비**를 정확히 파악하는 것이 중요합니다. 특히 2026년도에 변경된 정부의 전기차 보조금 정책과 충전 요금 체계 변화는 소비자의 총 소유 비용에 큰 영향을 미치므로, 이를 종합적으로 고려해야 합니다. BYD 돌핀의 장단점을 면밀히 살펴보고, 과연 합리적인 선택이 될 수 있을지 자세히 알아보겠습니다.</p>
+      
+      <h3>BYD 돌핀 핵심 스펙 요약 (2026년형 기준)</h3>
+      <div class="info-box">
+        <ul>
+          <li><strong>모델명:</strong> BYD Dolphin (BYD 돌핀)</li>
+          <li><strong>차종:</strong> 소형 해치백 전기차 (B-Segment EV)</li>
+          <li><strong>배터리 종류:</strong> BYD 블레이드 배터리 (LFP)</li>
+          <li><strong>배터리 용량:</strong> 60.48 kWh (롱레인지 모델 기준)</li>
+          <li><strong>주행 가능 거리 (WLTP):</strong> 약 427km</li>
+          <li><strong>최고 출력:</strong> 150kW (약 204마력)</li>
+          <li><strong>급속 충전 (10% → 80%):</strong> 약 30분</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cost-analysis">
+      <h2>BYD 돌핀 유지비 상세 분석: 전기 요금, 보험료, 소모품 견적</h2>
+      <p>BYD 돌핀의 유지비는 내연기관 차량 대비 확실한 강점을 가집니다. 특히 전기 요금은 휘발유나 경유 가격과 비교했을 때 매우 저렴하며, 소모품 교체 주기가 길다는 점도 장점으로 꼽힙니다. 하지만 전기차 특유의 높은 보험료와 배터리 교체 비용이라는 잠재적인 단점도 존재합니다. 아래에서는 각 항목별 **BYD 돌핀 유지비**를 상세하게 분석해 보겠습니다.</p>
+
+      <h3>1. 충전 비용: 전기차 유지비의 핵심</h3>
+      <p>전기차의 가장 큰 **유지비** 절감 효과는 '연료비'입니다. BYD 돌핀의 충전 비용은 어디서 충전하느냐에 따라 크게 달라집니다. 충전 방식은 크게 가정용 충전(완속)과 공용 충전소(급속/완속)로 나뉩니다. 2026년 한국전력의 전기 요금 체계를 기준으로 계산해 보겠습니다.</p>
+      
+      <h4>A. 가정용 완속 충전 비용 계산 (가장 저렴한 방법)</h4>
+      <p>가정용 충전은 보통 심야 시간대에 저렴한 경부하 요금을 적용받을 수 있어 **유지비**를 대폭 절감할 수 있는 방법입니다. 2026년 기준 경부하 요금(23시~09시)은 1kWh당 약 50~60원대입니다. BYD 돌핀의 배터리 용량(60.48kWh)을 기준으로 완충 시 소요되는 비용은 약 3,000원에서 4,000원 선입니다. WLTP 기준 427km를 주행한다고 가정하면, 1km당 10원 미만의 **유지비**로 주행이 가능합니다. 이는 내연기관 차량의 10분의 1 수준에 불과합니다.</p>
+      <div class="info-box">
+        <p><strong>BYD 돌핀 1회 완충 비용 (가정용 심야 기준):</strong><br>60.48kWh * 60원/kWh = 3,628원 (수수료 및 충전 손실 제외)</p>
+      </div>
+
+      <h4>B. 공용 충전소 충전 비용 계산 (일반적인 방법)</h4>
+      <p>공용 충전소는 충전 사업자(급속 충전의 경우 환경부, 한국전력, 기타 민간 사업자 등)와 충전 시간에 따라 요금이 달라집니다. 2026년 기준 공용 급속 충전 요금은 1kWh당 300~400원 수준으로 형성되어 있습니다. 가정용에 비해 5~6배가량 비싸지만, 여전히 내연기관 차량의 **유지비**보다는 저렴합니다.</p>
+      <div class="info-box">
+        <p><strong>BYD 돌핀 1회 완충 비용 (공용 급속 기준):</strong><br>60.48kWh * 350원/kWh = 21,168원 (충전 손실 제외)</p>
+      </div>
+      <p>월 2,000km 주행 기준으로 가정용 충전과 공용 충전을 5:5 비율로 사용한다고 가정하면, 한 달 **유지비**는 약 7~8만 원 선으로 **예상**됩니다. 이는 휘발유 차량의 월 **유지비** 25~30만 원과 비교했을 때 상당한 **비용 절감** 효과입니다.</p>
+
+      <h3>2. 자동차 보험료: 전기차의 단점</h3>
+      <p>전기차, 특히 수입 전기차는 내연기관 차량에 비해 보험료가 비싸다는 **단점**이 있습니다. 이는 차량 가격이 상대적으로 높고, 사고 발생 시 배터리 등 주요 부품의 수리 **비용**이 높기 때문입니다. BYD 돌핀의 경우에도 차량가액이 높게 책정되어 있어 보험료 **견적**이 다소 높게 나올 수 있습니다.</p>
+      <p><strong>BYD 돌핀 보험료 예상 금액:</strong><br>차량가액과 운전자 경력에 따라 다르지만, 2026년 기준 30대 운전자(가족한정)의 경우 연간 **평균** 보험료는 80만 원에서 120만 원 **내외**로 **예상**됩니다. 이는 국산 소형차 대비 20~30% 높은 **비용**입니다. 보험사마다 **가격** **차이점**이 크므로 **보험료 비교**를 통해 **저렴한곳**을 찾는 것이 중요합니다.</p>
+
+      <h3>3. 소모품 교체 및 정비 비용: BYD 돌핀의 장점</h3>
+      <p>전기차의 가장 큰 **장점** 중 하나는 엔진 오일, 미션 오일, 점화 플러그 등 내연기관에 필요한 소모품이 없다는 점입니다. BYD 돌핀 역시 마찬가지입니다. 정비 주기가 길어지므로 **장기 유지비** 측면에서 매우 유리합니다. 하지만 교체가 필요한 소모품도 있습니다.</p>
+      <ul>
+        <li><strong>타이어:</strong> 전기차는 무거운 배터리 때문에 타이어 마모 속도가 내연기관차보다 빠릅니다. **BYD 돌핀** 전용 타이어는 일반 타이어보다 **가격**이 비싸며, 교체 주기는 3~4만 km입니다. 타이어 4짝 교체 **비용**은 **평균** 60~80만 원 선으로 **예상**됩니다.</li>
+        <li><strong>브레이크 패드:</strong> 회생 제동 기능 덕분에 일반 차량보다 브레이크 패드 마모가 적습니다. 교체 주기는 6~8만 km로 길어 **유지비** 절감 효과가 있습니다.</li>
+        <li><strong>배터리 냉각수:</strong> 배터리 관리 시스템(BMS)에 필요한 냉각수 교체가 필요합니다. **견적**은 5~10만 원 **내외**입니다.</li>
+      </ul>
+
+      <p>소모품 교체 비용을 종합적으로 고려하면, BYD 돌핀은 내연기관 차량에 비해 5년간 소모품 **유지비**가 50% 이상 저렴할 것으로 **예상**됩니다.</p>
+
+      <div class="keyword-tags" aria-label="연관 검색 키워드">
+        <a href="#cost-analysis">BYD 돌핀 유지비</a>
+        <a href="#comparison">BYD 돌핀 경쟁 모델</a>
+        <a href="#tips">전기차 충전 비용</a>
+        <a href="#tips">BYD 돌핀 장단점</a>
+        <a href="#cost-analysis">전기차 보조금 2026</a>
+        <a href="#cost-analysis">BYD 돌핀 가격</a>
+        <a href="#tips">BYD 돌핀 배터리 보증</a>
+        <a href="#cost-analysis">BYD 돌핀 소모품 비용</a>
+        <a href="#comparison">코나 EV 유지비</a>
+        <a href="#comparison">니로 EV 유지비</a>
+        <a href="#cost-analysis">전기차 보험료 비교</a>
+        <a href="#tips">BYD 돌핀 충전 속도</a>
+      </div>
+    </section>
+
+    <section id="comparison">
+      <h2>경쟁 모델 비교: BYD 돌핀 vs. 현대 코나 EV, 기아 니로 EV 유지비</h2>
+      <p>BYD 돌핀은 국내 시장에서 현대 코나 EV, 기아 니로 EV와 직접적으로 경쟁하는 모델입니다. **유지비** 측면에서 이들 모델과 **차이점**을 비교해 보는 것은 합리적인 소비 결정을 위해 필수적입니다. 아래 표는 2026년 기준 주요 경쟁 모델들의 **유지비** 항목별 **장단점**을 비교한 것입니다.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>BYD 돌핀</th>
+            <th>현대 코나 EV</th>
+            <th>기아 니로 EV</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>차량 가격 (보조금 전)</strong></td>
+            <td>약 3,500만원 ~ 3,800만원</td>
+            <td>약 4,500만원 ~ 4,900만원</td>
+            <td>약 4,800만원 ~ 5,200만원</td>
+          </tr>
+          <tr>
+            <td><strong>2026년 보조금</strong></td>
+            <td><strong>최대 지원금 (예상)</strong></td>
+            <td><strong>최대 지원금 (예상)</strong></td>
+            <td><strong>최대 지원금 (예상)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>배터리 용량</strong></td>
+            <td>60.48 kWh (LFP)</td>
+            <td>64.8 kWh (NCM)</td>
+            <td>64.8 kWh (NCM)</td>
+          </tr>
+          <tr>
+            <td><strong>1회 충전 주행거리</strong></td>
+            <td>427 km (WLTP)</td>
+            <td>410 km (WLTP)</td>
+            <td>401 km (WLTP)</td>
+          </tr>
+          <tr>
+            <td><strong>연간 충전 비용 (평균)</strong></td>
+            <td>약 50~80만원 (주행거리 15,000km 기준)</td>
+            <td>약 55~85만원 (주행거리 15,000km 기준)</td>
+            <td>약 60~90만원 (주행거리 15,000km 기준)</td>
+          </tr>
+          <tr>
+            <td><strong>연간 보험료 (평균)</strong></td>
+            <td>80만 원 ~ 120만 원</td>
+            <td>90만 원 ~ 130만 원</td>
+            <td>90만 원 ~ 130만 원</td>
+          </tr>
+          <tr>
+            <td><strong>배터리 보증 기간</strong></td>
+            <td>8년 / 16만 km (예상)</td>
+            <td>10년 / 20만 km</td>
+            <td>10년 / 20만 km</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>BYD 돌핀의 경쟁력 분석</h3>
+      <p>표에서 보듯이, BYD 돌핀은 국내 경쟁 모델 대비 **가장 큰 장점**인 <strong>저렴한 차량 가격</strong>을 가지고 있습니다. 이는 초기 **구매 비용**을 대폭 낮춰주는 핵심 요소입니다. 2026년 **보조금**을 받으면 실구매 **가격**은 더욱 낮아져 **저렴한** 전기차를 찾는 소비자에게 매력적입니다. **BYD 돌핀**은 배터리 종류가 LFP(리튬 인산철)로 NCM(니켈 코발트 망간) 배터리를 사용하는 국산 모델 대비 주행거리는 조금 짧지만, 안전성과 내구성이 뛰어나다는 **장점**이 있습니다.</p>
+      <p>**유지비** 측면에서는 세 모델 모두 큰 차이가 없지만, BYD 돌핀은 초기 투자 **비용**이 낮아 총 소유 **비용**이 적게 드는 **장점**이 있습니다. 다만, 배터리 보증 기간이 국산 모델보다 짧을 수 있다는 **단점**은 **장기 유지비** 관점에서 고려해야 할 사항입니다.</p>
+    </section>
+
+    <section id="tips">
+      <h2>BYD 돌핀 유지비 절약 팁 및 필수 정보</h2>
+      <p>BYD 돌핀 구매를 결정했다면, 이제 **유지비**를 최대한 절약할 수 있는 방법을 알아봐야 합니다. 2026년도에 적용되는 다양한 정부 혜택과 **전기차 충전** 팁을 활용하여 **예상**보다 더 큰 **비용 절감** 효과를 누려보세요.</p>
+
+      <h3>1. 2026년 전기차 보조금 완벽 활용법</h3>
+      <p>전기차 보조금은 **BYD 돌핀** 구매 **비용**을 대폭 낮춰주는 핵심 혜택입니다. 2026년에도 정부는 전기차 보급 확대를 위해 보조금을 지원하고 있습니다. 보조금은 국비와 지방비로 나뉘며, 거주 지역에 따라 **금액**이 달라질 수 있습니다. **BYD 돌핀**은 보조금 100% 지급 대상 차량으로 분류될 가능성이 높아 **저렴한** **가격**으로 구매할 수 있는 **장점**이 있습니다.</p>
+      <p><strong>보조금 확인 팁:</strong> 환경부 전기차 통합 누리집(EV)에서 2026년 기준 정확한 **보조금** 정보를 확인할 수 있습니다. 보조금은 매년 초에 확정되므로, 구매 시점에 맞춰 확인하는 것이 중요합니다. <a href="https://www.ev.or.kr/portal/main" target="_blank" rel="noopener noreferrer" class="external-link">환경부 전기차 통합 포털에서 보조금 정보 확인하기</a></p>
+
+      <h3>2. BYD 돌핀 배터리 관리 요령과 장기 유지비</h3>
+      <p>전기차의 핵심 부품인 배터리 관리는 **장기 유지비**에 직접적인 영향을 미칩니다. **BYD 돌핀**에 탑재된 LFP 배터리는 NCM 배터리보다 내구성이 좋고 화재 위험이 낮다는 **장점**이 있지만, 겨울철 주행거리가 감소하는 **단점**이 있습니다. 배터리 성능 저하를 방지하기 위해 100% 완충보다는 20%~80% 사이를 유지하는 것이 좋습니다. BYD 돌핀의 배터리 보증 기간과 내용을 **꼼꼼히 확인**하는 것도 중요합니다.</p>
+      <p><strong>배터리 보증 기간 확인:</strong> **BYD 돌핀**의 국내 출시 모델에 대한 제조사 보증 기간은 8년/16만 km(예상)입니다. 이 기간 동안 배터리 성능이 일정 수준(보통 70%) 이하로 떨어지면 무상으로 교체받을 수 있습니다. 보증 기간은 **장기 유지비** **견적**에 있어 매우 중요한 요소입니다.</p>
+
+      <h3>3. 충전 인프라 활용: 가장 싼 충전 방법 찾기</h3>
+      <p>**BYD 돌핀** **유지비**의 대부분을 차지하는 충전 비용을 절약하려면 충전 인프라 활용 전략이 필요합니다. <strong>가정용 충전기 설치</strong>는 **유지비**를 가장 **저렴하게** 가져가는 방법입니다. 만약 아파트 등 공동 주택에 거주하여 설치가 어렵다면, 아파트 관리사무소에 **전기차 충전** 인프라 구축 **지원금**을 문의해 보세요. 2026년에도 정부는 공동 주택 충전기 설치를 지원하고 있습니다.</p>
+      <p><strong>민간 충전소 혜택:</strong> 일부 민간 충전 사업자는 **신규 가입** 시 **할인** 혜택이나 **상품권** **지원금**을 제공하기도 합니다. **유튜브**나 **네이버** 검색을 통해 다양한 충전 **혜택**을 **비교**해 보는 것을 추천합니다.</p>
+
+      <h3>4. 인공지능(AI) 기반 유지비 계산기 활용</h3>
+      <p>BYD 돌핀의 정확한 **유지비**를 **예상**하기 위해 인공지능 기반 계산기를 활용해 보세요. **제미나이(Gemini)**나 **ChatGPT**와 같은 AI 챗봇에게 "BYD 돌핀 1년 **유지비** **계산**해줘"라고 질문하면, 주행거리, 거주지역 등 변수를 고려한 **예상** **금액**을 알려줍니다.</p>
+
+      <div class="input-calculator">
+        <h3>BYD 돌핀 유지비 시뮬레이션 계산기</h3>
+        <p>고객님의 주행 습관에 따른 **BYD 돌핀** 연간 **유지비**를 **예상**해 보세요.</p>
+        <label for="distance">1년 예상 주행거리 (km):</label>
+        <input type="number" id="distance" value="15000" min="1000">
+        <label for="charging_ratio">가정용 충전 비율 (%):</label>
+        <input type="range" id="charging_ratio" min="0" max="100" value="70"> <span id="charging_ratio_value">70%</span>
+        <label for="insurance">자동차 보험료 (연간, 원):</label>
+        <input type="number" id="insurance" value="1000000">
+        <button onclick="calculateCost()">유지비 계산하기</button>
+        <p id="result" style="margin-top: 1rem; font-weight: bold; font-size: 1.1rem;"></p>
+      </div>
+      <script>
+        document.getElementById('charging_ratio').addEventListener('input', function() {
+          document.getElementById('charging_ratio_value').textContent = this.value + '%';
+        });
+
+        function calculateCost() {
+          const distance = parseFloat(document.getElementById('distance').value);
+          const chargingRatio = parseFloat(document.getElementById('charging_ratio').value) / 100;
+          const insurance = parseFloat(document.getElementById('insurance').value);
+
+          // BYD 돌핀 연비 (전비) 및 충전 비용 가정 (2026년 기준)
+          const efficiency = 5.0; // km/kWh (복합 전비)
+          const homeCostPerKwh = 60; // 원/kWh (가정용 심야)
+          const publicCostPerKwh = 350; // 원/kWh (공용 급속 평균)
+
+          const totalKwh = distance / efficiency;
+          const homeKwh = totalKwh * chargingRatio;
+          const publicKwh = totalKwh * (1 - chargingRatio);
+
+          const totalChargingCost = (homeKwh * homeCostPerKwh) + (publicKwh * publicCostPerKwh);
+          const annualCost = totalChargingCost + insurance;
+
+          document.getElementById('result').textContent = `예상 연간 유지비 (충전비 + 보험료): ${annualCost.toLocaleString()}원`;
+        }
+      </script>
+
+      <h3>5. 기타 비용: 세금, 통행료 할인 혜택</h3>
+      <p>전기차를 구매하면 내연기관 차량에 비해 세금 혜택을 받습니다. 2026년 기준 전기차는 취득세 감면 혜택이 주어지며, 자동차세는 일괄적으로 연 13만 원으로 저렴합니다. 또한, 공영 주차장 주차료 50% 할인, 고속도로 통행료 50% 할인 등 다양한 혜택이 **BYD 돌핀** **유지비** 절감에 기여합니다. 이러한 **장점**들을 종합적으로 고려하면, BYD 돌핀은 초기 **비용** 대비 **장기 유지비** **효율**이 매우 뛰어난 모델임을 알 수 있습니다.</p>
+      <p><strong>참고:</strong> 고속도로 통행료 할인 정보는 <a href="http://www.ex.co.kr/main.do" target="_blank" rel="noopener noreferrer" class="external-link">한국도로공사 홈페이지</a>에서 확인 가능합니다.</p>
+    </section>
+
+    <section id="faq">
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. BYD 돌핀의 배터리 수명과 교체 비용은 얼마나 드나요?</strong></dt>
+          <dd>BYD 돌핀에 사용되는 LFP 배터리는 NCM 배터리보다 내구성이 좋아 수명이 긴 편입니다. 하지만 배터리 교체는 전기차에서 가장 큰 **비용**이 발생하는 부분입니다. **BYD 돌핀**의 경우 배터리 **가격**은 정확히 고지되지 않았지만, **예상** **금액**은 1,000만 원 **내외**로 **추정**됩니다. 하지만 제조사 보증 기간(8년/16만 km)이 있으므로, 보증 기간 내에는 성능 저하에 대한 걱정을 덜 수 있습니다.</dd>
+        </div>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. BYD 돌핀 구매 시 받을 수 있는 보조금 금액은 얼마나 되나요?</strong></dt>
+          <dd>2026년도 **BYD 돌핀** 보조금 **견적**은 환경부와 지자체에 따라 다릅니다. 차량의 기본 **가격**과 주행거리, 배터리 효율 등을 종합적으로 고려하여 산정됩니다. 일반적으로 BYD 돌핀은 **전기차 보조금** 100% 지급 대상 차량에 속할 가능성이 높아, **저렴한** **가격**으로 구매할 수 있는 **장점**이 있습니다. 자세한 **금액**은 거주지 지자체 공고를 확인해 주세요. <a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=251025&efYd=20230209#0000" target="_blank" rel="noopener noreferrer" class="external-link">환경친화적 자동차의 개발 및 보급 촉진에 관한 법률</a></dd>
+        </div>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. BYD 돌핀의 장단점을 간단하게 비교해 주세요.</strong></dt>
+          <dd><strong>장점:</strong> 저렴한 초기 구매 **가격**, 내연기관 대비 압도적인 **유지비** 절감 효과(연료비 및 소모품), LFP 배터리의 안전성 및 내구성. <strong>단점:</strong> 상대적으로 짧은 겨울철 주행거리, 국산 경쟁 모델 대비 낮은 AS 접근성, 높은 보험료 **견적**.</dd>
+        </div>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. BYD 돌핀 구매를 후회하는 사례도 있나요?</strong></dt>
+          <dd>일부 **내돈내산** **후기**를 보면, **BYD 돌핀**의 단점으로 **AS 센터** 부족을 꼽는 경우가 많습니다. 특히 <strong>신규</strong>로 **가입**한 **디시**나 **네이버 카페** 이용자들 사이에서 **AS** 관련 불편함이 언급되곤 합니다. **BYD 돌핀** **유지비**는 저렴하지만, **AS**가 불편하면 전체적인 만족도가 떨어질 수 있습니다. **전문 업체**의 **순위**나 **추천** 정보를 통해 AS망이 잘 구축되어 있는지 확인해야 합니다.</dd>
+        </div>
+        <div class="faq-item">
+          <dt tabindex="0" aria-expanded="false"><strong>Q. BYD 돌핀과 함께 많이 찾는 키워드는 무엇인가요?</strong></dt>
+          <dd>BYD 돌핀과 함께 많이 찾는 연관 검색어는 'BYD 씰', 'BYD 앗토3', '테슬라 모델3', '볼트 EUV', '아이오닉 5' 등입니다. 이 모델들은 BYD 돌핀과 **비교** 대상이 되는 전기차입니다. 또한 '전기차 보조금', '충전 비용', '전기차 보험료' 등 **유지비** 관련 키워드가 자주 검색됩니다.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <h2>BYD 돌핀 구매 문의 및 비용 상담</h2>
+      <p>BYD 돌핀 구매를 고려하시나요? 정확한 **유지비** **견적**과 **보조금** 혜택을 전문가와 상담해 보세요. 2026년 최신 **전기차 보조금** 정보를 바탕으로 합리적인 **가격**에 **BYD 돌핀**을 구매할 수 있도록 도와드립니다.</p>
+      <div class="info-box">
+        <ul>
+          <li><strong>문의 전화:</strong> 050-1234-5678 (24시간 상담 가능)</li>
+          <li><strong>이메일:</strong> byd-dolphincare@yourdomain.com</li>
+        </ul>
+      </div>
+      <a href="mailto:byd-dolphincare@yourdomain.com" class="cta-button" aria-label="BYD 돌핀 유지비 상담하기">무료 상담 신청하기</a>
+    </section>
+
+    <!-- Pexels 이미지 저작권 정보 (상업적 사용 가능) -->
+    <p style="text-align: right; font-size: 0.8rem; color: #777; margin-top: 2rem;">Source Image: Pexels.com - Photographer: Mike B</p>
+
+  </main>
+
+  <script>
+    // FAQ 아코디언 기능 (접기/펼치기)
+    document.querySelectorAll('.faq-item dt').forEach((dt) => {
+      dt.addEventListener('click', () => {
+        const expanded = dt.getAttribute('aria-expanded') === 'true' || false;
+        dt.setAttribute('aria-expanded', !expanded);
+        dt.classList.toggle('active');
+      });
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dt.click();
+        }
+      });
+    });
+  </script>
+  
